@@ -1,7 +1,6 @@
 from tkinter import *
 import db
 
-#db = db.Database('albums.db')
 app = Tk()
 
 def add():
@@ -58,10 +57,6 @@ def update_app():
     else:
         remove_btn["state"] = "disabled"
     app.after(100, update_app)    
-
-def on_closing():
-    db.conn.close()
-    app.destroy()
 
 artist_text = StringVar()
 artist_label = Label(app, text='Artist', font=('bold',14), pady=20)
@@ -122,7 +117,5 @@ app.geometry("700x350")
 
 populate_albums()
 update_app()
-
-app.protocol("WM_DELETE_WINDOW", on_closing)
 
 app.mainloop()
