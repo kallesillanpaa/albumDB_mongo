@@ -60,7 +60,7 @@ def update_app():
     app.after(100, update_app)    
 
 def on_closing():
-    db.__del__()
+    db.conn.close()
     app.destroy()
 
 artist_text = StringVar()
