@@ -28,14 +28,13 @@ def populate_albums():
     for row in db.fetch_albums():
         album_list.insert(END,row)
     
-  
 def select_album(event):        
     update_btn["state"] = "normal"
     global selected_album       
     index = album_list.curselection()[0]   
        
     selected_album = album_list.get(index)     
-    selected_album = selected_album.split('-')
+    selected_album = selected_album.split(',')
     
     artist_entry.delete(0,END)
     artist_entry.insert(END, selected_album[0])

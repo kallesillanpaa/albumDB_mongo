@@ -7,7 +7,6 @@ client = MongoClient(cluster)
 db = client.AlbumDB
 albums = db.Albums
 
-
 def add_album(artist,album,year,genre):
     albums.insert_one({
         "artist":artist,
@@ -21,11 +20,36 @@ def fetch_albums():
     for row in albums.find():
         result.append(
             row["artist"]+
-            " - " +
+            "," +
             row["album"]+
-            " - " +
-            str(row["year"])+
-            " - " +
+            "," +
+            row["year"]+
+            "," +
             row["genre"]
         )
-    return result 
+    return result    
+
+def remove(selected_album):
+    albums.delete_one({
+        "artist": selected_album[0],
+        "album": selected_album[1],
+        "year": selected_album[2],
+        "genre": selected_album[3]
+    })
+
+def update(selected_album,artist,album,year,genre):
+    filterr = {
+        "artist": selected_album[0],
+        "album": selected_album[1],
+        "year": selected_album[2],
+        "genre": selected_album[3]}
+
+    new_values = {
+        "$set": {
+        "artist": artist,
+        "album": album,
+        "year": year,
+        "genre": genre
+    }}
+    albums.update_one(filterr, new_values)
+    
