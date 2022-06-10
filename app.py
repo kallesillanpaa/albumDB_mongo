@@ -24,10 +24,10 @@ def clear():
     artist_entry.focus_set()
 
 def populate_albums():
-    #album_list.delete(0,END)
-    #for row in db.fetch_albums():
-    #    album_list.insert(END,row)
-    pass
+    album_list.delete(0,END)
+    for row in db.fetch_albums():
+        album_list.insert(END,row)
+    
   
 def select_album(event):        
     update_btn["state"] = "normal"
