@@ -38,13 +38,13 @@ def select_album(event):
     selected_album = selected_album.split('-')
     
     artist_entry.delete(0,END)
-    artist_entry.insert(END, selected_album[1])
+    artist_entry.insert(END, selected_album[0])
     album_entry.delete(0,END)
-    album_entry.insert(END, selected_album[2])
+    album_entry.insert(END, selected_album[1])
     year_entry.delete(0,END)
-    year_entry.insert(END, selected_album[3])
+    year_entry.insert(END, selected_album[2])
     genre_entry.delete(0,END)
-    genre_entry.insert(END, selected_album[4])
+    genre_entry.insert(END, selected_album[3])
 
 def update_app():
     if artist_text.get()!="" and album_text.get()!="" and year_text.get()!="" and genre_text.get()!="":
