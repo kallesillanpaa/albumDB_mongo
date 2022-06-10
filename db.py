@@ -24,7 +24,7 @@ def fetch_albums():
             " - " +
             row["album"]+
             " - " +
-            row["year"]+
+            str(row["year"])+
             " - " +
             row["genre"]
         )
